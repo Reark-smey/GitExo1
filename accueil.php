@@ -1,19 +1,14 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Bonjour avec case à cocher</title>
-</head>
-<body>
+Bonjour <?php echo $_POST["prenom"]." ".$_POST['nom']; ?>
 <?php
-if((isset($_POST["nom"]) && !empty($_POST["nom"])) or (isset($_POST["prenom"]) && !empty($_POST["prenom"]))) {
-// on récupère la variable saisie
-    $prenom = $_POST["prenom"];
-    $nom = $_POST["nom"];
-// traitement
-
-
-//affichage
-    echo 'Bienvenue ' . $_POST["nom"] . ' ' . $_POST["prenom"];
+$host = $_SERVER['HTTP_HOST'];
+$uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+if ($_POST["login"]=="admin" && $_POST["mdp"]=="azerty") {
+    $extra = 'profil.html';
+    header("Location: http://$host$uri/$extra");
+    exit;
+}else{
+    $extra = 'index.html';
+    header("Location: http://$host$uri/$extra");
+    exit;
 }
 ?>
-</body>
